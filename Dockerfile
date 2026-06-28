@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Official Airflow 3.0.0 image — version pinned so Railway always builds the same thing
-FROM apache/airflow:3.0.0
+FROM apache/airflow:2.10.5
 
 # Switch to root to install system dependencies
 USER root

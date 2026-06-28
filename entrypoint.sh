@@ -17,11 +17,8 @@ echo "=== Starting Airflow setup ==="
 echo "Running database migration..."
 airflow db migrate
 
-# CHANGE 1: airflow users create → airflow fab create-admin
-# The users command was removed in Airflow 3.x
-# User management now goes through the FAB (Flask App Builder) interface
 echo "Creating admin user..."
-airflow fab create-admin \
+airflow users create \
     --username "${AIRFLOW_ADMIN_USERNAME:-admin}" \
     --password "${AIRFLOW_ADMIN_PASSWORD:-admin}" \
     --firstname "TransTrack" \
@@ -36,8 +33,6 @@ sudo service ssh start || true
 echo "Starting Airflow scheduler..."
 airflow scheduler &
 
-# CHANGE 2: airflow webserver → airflow api-server
-# The webserver command was removed in Airflow 3.x
-# api-server is the new equivalent
-echo "Starting Airflow api-server on port 8080..."
-exec airflow api-server --port 8080
+echo "Starting Airflow webserver on port 8080..."
+exec airflow webserver --port 8080
+
