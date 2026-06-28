@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Airflow local files — never commit these
+airflow.db
+airflow.cfg
+logs/
+airflow-webserver.pid
+
+# Credentials
+secrets.py
+credentials.json
+*.env
+
+# SSH keys — never commit these
+railway_deploy_key
+railway_deploy_key.pub
+
+# OS
+.DS_Store
+Thumbs.db
